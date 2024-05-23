@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KALKULATOR BANGUN RUANG & DATAR</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1>Kalkulator Bangun Ruang & Datar</h1>
+    <div class="container">
+        <form method="post" action="index.php">
+            <label for="bangun">Pilih Bangun:</label>
+            <select id="bangun" name="bangun" onchange="tampilkanGambar()">
+                <option value="Kubus">Kubus</option>
+                <option value="Balok">Balok</option>
+                <option value="Kerucut">Kerucut</option>
+                <option value="Bola">Bola</option>
+                <option value="Prisma">Prisma</option>
+                <option value="Tabung">Tabung</option>
+                <option value="Limas">Limas</option>
+                <option value="Persegi">Persegi</option>
+                <option value="PersegiPanjang">Persegi Panjang</option>
+                <option value="Segitiga">Segitiga</option>
+                <option value="JajarGenjang">Jajar Genjang</option>
+                <option value="Trapesium">Trapesium</option>
+                <option value="BelahKetupat">Belah Ketupat</option>
+                <option value="Lingkaran">Lingkaran</option>
+            </select>
+            <div id="gambarKubus" class="gambar-bangun">
+                <img src="gambar/kubus.png" alt="Kubus" style="width: 400px; height: 400px;">
+            </div>
+            <div id="gambarBalok" class="gambar-bangun">
+                <img src="gambar/balok.png" alt="Balok" style="width: 400px; height: 400px;">
+            </div>
+            <div id="gambarKerucut" class="gambar-bangun">
+                <img src="gambar/kerucut.png" alt="Kerucut" style="width: 400px; height: 400px;">
+            </div>
+            <div id="gambarBola" class="gambar-bangun">
+                <img src="gambar/bola.png" alt="Bola" style="width: 400px; height: 400px;">
+            </div>
+            <div id="gambarPrisma" class="gambar-bangun">
+                <img src="gambar/prisma.png" alt="Prisma" style="width: 400px; height: 400px;">
+            </div>
+            <div id="gambarTabung" class="gambar-bangun">
+                <img src="gambar/tabung.png" alt="Tabung" style="width: 400px; height: 400px;">
+            </div>
+            <div id="gambarLimas" class="gambar-bangun">
+                <img src="gambar/limas.png" alt="Limas" style="width: 400px; height: 400px;">
+            </div>
+            <div id="gambarPersegi" class="gambar-bangun">
+                <img src="gambar/persegi.png" alt="Persegi" style="width: 400px; height: 400px;">
+            </div>
+            <div id="gambarPersegiPanjang" class="gambar-bangun">
+                <img src="gambar/persegipanjang.png" alt="Persegi Panjang" style="width: 400px; height: 400px;">
+            </div>
+            <div id="gambarSegitiga" class="gambar-bangun">
+                <img src="gambar/segitiga.png" alt="Segitiga" style="width: 400px; height: 400px;">
+            </div>
+            <div id="gambarJajarGenjang" class="gambar-bangun">
+                <img src="gambar/jajargenjang.png" alt="Jajar Genjang" style="width: 400px; height: 400px;">
+            </div>
+            <div id="gambarTrapesium" class="gambar-bangun">
+                <img src="gambar/trapesium.png" alt="Trapesium" style="width: 400px; height: 400px;">
+            </div>
+            <div id="gambarBelahKetupat" class="gambar-bangun">
+                <img src="gambar/belahketupat.png" alt="Belah Ketupat" style="width: 400px; height: 400px;">
+            </div>
+            <div id="gambarLingkaran" class="gambar-bangun">
+                <img src="gambar/lingkaran.png" alt="Lingkaran" style="width: 400px; height: 400px;">
+            </div>
+            <div id="input-fields"></div>
+            <button type="submit">Hitung</button>
+        </form>
+        <div id="hasil"><?php echo $hasil_text; ?></div>
+    </div>
+    <script>
+        function tampilkanGambar() {
+            // Dapatkan nilai pilihan dari dropdown
+            var pilihan = document.getElementById("bangun").value;
+
+            // Semua gambar dijadikan tidak terlihat terlebih dahulu
+            var semuaGambar = document.getElementsByClassName("gambar-bangun");
+            for (var i = 0; i < semuaGambar.length; i++) {
+                semuaGambar[i].style.display = "none";
+            }
+
+            // Tampilkan gambar yang sesuai dengan pilihan
+            var gambarYangDitampilkan = document.getElementById("gambar" + pilihan);
+            if (gambarYangDitampilkan) {
+                gambarYangDitampilkan.style.display = "block";
+            }
+        }
+
+        window.onload = function() {
+            tampilkanGambar(); 
+            tampilkanKolom();
+        };
+    </script>
+</body>
+</html>
