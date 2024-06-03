@@ -7,18 +7,21 @@ class Bangun {
     public static function is_number($s) {
         return is_numeric($s);
     }
+    public static function positive($number) {
+        return $number > 0;
+    }
 
     public static function hitung($bangun, $data) {
         $hasil_text = ""; 
         switch ($bangun) {
             case "Kubus":
-                if (self::is_number($data['sisi'])) {
+                if (self::is_number ($data['sisi'])&& self::positive($data['sisi'])) {
                     $sisi = floatval($data['sisi']);
                     $luas_permukaan = 6 * ($sisi ** 2);
                     $volume = $sisi ** 3;
-                    $hasil_text = "Kubus:<br>Luas Permukaan = $luas_permukaan<br>Volume = $volume";
+                    $hasil_text = "Kubus dengan sisi $sisi memiliki <br>Luas Permukaan = $luas_permukaan<br>Volume = $volume";
                 } else {
-                    $hasil_text = "Masukkan harus berupa angka!";
+                    $hasil_text = "Masukkan harus berupa angka positif!";
                 }
                 break;
             case "Balok":
